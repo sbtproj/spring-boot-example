@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>at.shtrans</groupId>
+    <artifactId>shtrans</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>shtrans-service</module>
+        <module>shtrans-repository</module>
+        <module>shtrans-doc</module>
+        <module>shtrans-domain</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <database-rider.version>1.41.0</database-rider.version>
+        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
+        <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>at.shtrans</groupId>
+                <artifactId>shtrans-domain</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.persistence</groupId>
+                <artifactId>jakarta.persistence-api</artifactId>
+                <version>${jakarta.persistence-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.transaction</groupId>
+                <artifactId>jakarta.transaction-api</artifactId>
+                <version>${jakarta.transaction-api.version}</version>
+            </dependency>
+
+            <!-- BEGIN TESTS database-rider -->
+            <dependency>
+                <groupId>com.github.database-rider</groupId>
+                <artifactId>rider-core</artifactId>
+                <version>${database-rider.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.database-rider</groupId>
+                <artifactId>rider-junit5</artifactId>
+                <version>${database-rider.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-commons</artifactId>
+                <version>1.9.3</version>
+                <scope>compile</scope>
+            </dependency>
+            <!--dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-runner</artifactId>
+                <version>1.9.3</version>
+                <scope>test</scope>
+            </dependency-->
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-suite</artifactId>
+                <version>1.9.3</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- END TESTS database-rider -->
+        </dependencies>
+    </dependencyManagement>
+
+</project>
