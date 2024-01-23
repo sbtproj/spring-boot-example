@@ -21,8 +21,16 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>3.2.2</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.1.2</version>
+            <version>3.2.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
@@ -30,6 +38,26 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>6.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>6.1.2</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>com.h2database</groupId>
@@ -52,19 +80,49 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.0</version> <!-- mit andere version intelij spinnt -->
+            <version>5.9.2</version> <!-- mit andere version intelij spinnt -->
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.0</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-engine -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-engine</artifactId>
+            <version>1.9.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-test -->
+        <!--dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>3.0.2</version>
+            <scope>test</scope>
+        </dependency-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>3.2.2</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
         <!-- https://stackoverflow.com/questions/69395613/got-an-error-with-junit-platform-v-5-8-1-java-lang-nosuchmethoderror-org-junit -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
+            <version>1.9.2</version>
+            <scope>test</scope>
         </dependency>
         <!--dependency>
             <groupId>org.junit.platform</groupId>
