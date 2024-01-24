@@ -1,4 +1,4 @@
-package at.shtrans;
+package at.shtrans.configuration;
 
 
 import com.github.database.rider.junit5.api.DBRider;
@@ -10,8 +10,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 @SuppressWarnings("squid:S2187")
+@DBRider
 @SpringBootTest
-@DBRider //(dataSourceBeanName = "testDataSource")
 @TestExecutionListeners(
         value = {DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class})
 @ContextConfiguration(classes = {JpaTransactionManagerTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)

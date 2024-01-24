@@ -1,4 +1,4 @@
-package at.shtrans;
+package at.shtrans.configuration;
 
 
 import jakarta.persistence.EntityManagerFactory;
@@ -28,35 +28,6 @@ public class JpaTransactionManagerTestConfiguration {
     @Autowired
     private Environment env;
 
-    @Bean("testDataSource")
-    public DataSource dataSource() {
-        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.user"));
-        dataSource.setPassword(env.getProperty("jdbc.pass"));
-
-        return dataSource;
-    }
-
-
-    @Bean("entityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource testDataSource) {
-        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(testDataSource);
-        em.setPackagesToScan(new String[]{"at.shtrans.domain"});
-
-
-        // HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        //     jpaVendorAdapter.setGenerateDdl(true);
-        // jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
-
-        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        em.setJpaProperties(additionalProperties());
-
-        return em;
-    }
-
     @Bean
     @ConditionalOnMissingBean(type = "JpaTransactionManager")
     JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
@@ -66,7 +37,37 @@ public class JpaTransactionManagerTestConfiguration {
         return transactionManager;
     }
 
-    final Properties additionalProperties() {
+    @Bean("entityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource testDataSource) {
+        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(testDataSource);
+        em.setPackagesToScan("at.shtrans.domain");
+        em.setJpaVendorAdapter(hibernateJpaVendorAdapter());
+        em.setJpaProperties(additionalProperties());
+
+        return em;
+    }
+
+    @Bean("testDataSource")
+    DataSource dataSource() {
+        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.user"));
+        dataSource.setPassword(env.getProperty("jdbc.pass"));
+
+        return dataSource;
+    }
+
+    HibernateJpaVendorAdapter hibernateJpaVendorAdapter() {
+        HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+        jpaVendorAdapter.setGenerateDdl(true);
+        jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
+
+        return jpaVendorAdapter;
+    }
+
+    Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
