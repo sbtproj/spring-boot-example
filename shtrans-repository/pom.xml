@@ -56,13 +56,6 @@
             <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://stackoverflow.com/questions/69395613/got-an-error-with-junit-platform-v-5-8-1-java-lang-nosuchmethoderror-org-junit -->
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-commons</artifactId>
-            <version>1.9.2</version>
-            <scope>test</scope>
-        </dependency>
         <!-- database-rider -->
         <dependency>
             <groupId>com.github.database-rider</groupId>
