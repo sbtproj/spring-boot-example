@@ -78,8 +78,13 @@
                 <version>1.9.3</version>
                 <scope>test</scope>
             </dependency>
-
-            <!-- END TESTS database-rider -->
+            <!-- database h2 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2database.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
