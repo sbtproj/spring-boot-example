@@ -25,6 +25,7 @@
         <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
         <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
         <springframework.boot.version>3.2.2</springframework.boot.version>
+        <h2database.version>2.2.224</h2database.version>
     </properties>
 
     <dependencyManagement>
