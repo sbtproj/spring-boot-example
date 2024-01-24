@@ -1,7 +1,6 @@
 package at.shtrans.repository;
 
 import at.shtrans.configuration.DataJpaBasicConfigurationTest;
-import at.shtrans.repository.CustomerRepository;
 import com.github.database.rider.core.api.dataset.DataSet;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class ConnectionConfigJUnit5 extends DataJpaBasicConfigurationTest {
+class CustomerRepositoryTest extends DataJpaBasicConfigurationTest {
 
     @Autowired
     private CustomerRepository customerRepository;
