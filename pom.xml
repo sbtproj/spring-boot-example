@@ -25,6 +25,7 @@
         <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
         <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
         <springframework.boot.version>3.2.2</springframework.boot.version>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version><!-- mit version 5.10.1 intelij spinnt -->
         <h2database.version>2.2.224</h2database.version>
     </properties>
 
@@ -76,6 +77,13 @@
                 <groupId>org.junit.platform</groupId>
                 <artifactId>junit-platform-suite</artifactId>
                 <version>1.9.3</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
             <!-- database h2 -->
