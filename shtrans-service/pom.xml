@@ -11,5 +11,16 @@
 
     <artifactId>shtrans-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>at.shtrans</groupId>
+            <artifactId>shtrans-repository</artifactId>
+        </dependency>
+        <!-- springframework boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
