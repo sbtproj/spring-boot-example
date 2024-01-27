@@ -17,6 +17,11 @@
             <groupId>at.shtrans</groupId>
             <artifactId>service</artifactId>
         </dependency>
+        <!-- springframework boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- springfox -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -27,5 +32,14 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
