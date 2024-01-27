@@ -10,10 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>shtrans-domain</module>
-        <module>shtrans-repository</module>
-        <module>shtrans-service</module>
-        <module>shtrans-doc</module>
+        <module>documentation</module>
+        <module>domain-model</module>
+        <module>repository</module>
+        <module>service</module>
         <module>web-service</module>
     </modules>
 
@@ -37,22 +37,22 @@
             <!-- modules -->
             <dependency>
                 <groupId>at.shtrans</groupId>
-                <artifactId>shtrans-domain</artifactId>
+                <artifactId>domain-model</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>at.shtrans</groupId>
-                <artifactId>shtrans-repository</artifactId>
+                <artifactId>repository</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>at.shtrans</groupId>
-                <artifactId>shtrans-service</artifactId>
+                <artifactId>service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>at.shtrans</groupId>
-                <artifactId>shtrans-doc</artifactId>
+                <artifactId>documentation</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- springframework boot -->

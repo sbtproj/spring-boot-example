@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>at.shtrans</groupId>
-            <artifactId>shtrans-service</artifactId>
+            <artifactId>service</artifactId>
         </dependency>
         <!-- springfox -->
         <dependency>

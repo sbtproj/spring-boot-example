@@ -9,8 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shtrans-domain</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>domain-model</artifactId>
 
     <dependencies>
         <!-- jakarta -->

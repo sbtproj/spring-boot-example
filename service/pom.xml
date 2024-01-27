@@ -9,12 +9,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shtrans-service</artifactId>
+    <artifactId>service</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>at.shtrans</groupId>
-            <artifactId>shtrans-repository</artifactId>
+            <artifactId>repository</artifactId>
         </dependency>
         <!-- springframework boot -->
         <dependency>
