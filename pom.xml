@@ -30,6 +30,9 @@
         <junit-jupiter.version>5.9.2</junit-jupiter.version><!-- mit version 5.10.1 intelij spinnt -->
         <junit-platform.version>1.9.3</junit-platform.version>
         <h2database.version>2.2.224</h2database.version>
+        <!-- maven plugins -->
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -140,5 +143,21 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
