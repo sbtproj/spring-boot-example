@@ -32,7 +32,7 @@ public class SwaggerConfiguration {
 
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors.basePackage("at.shtrans.rest.controller"))
-                .paths(PathSelectors.ant("/"))
+                .paths(PathSelectors.ant("/api"))
                 .build()
                 .apiInfo(apiInfo())
                 .useDefaultResponseMessages(false)
