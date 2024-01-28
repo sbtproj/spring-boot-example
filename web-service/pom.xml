@@ -17,6 +17,11 @@
             <groupId>at.shtrans</groupId>
             <artifactId>service</artifactId>
         </dependency>
+        <!-- jakarta -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
         <!-- springframework boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
