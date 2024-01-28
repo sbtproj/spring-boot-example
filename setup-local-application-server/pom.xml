@@ -14,8 +14,13 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <wildfly-maven-plugin.version>4.2.2.Final</wildfly-maven-plugin.version>
+        <wildfly-maven-plugin.version>5.0.0.Beta2</wildfly-maven-plugin.version>
         <local.wildfly.dir>${project.build.directory}/wildfly/</local.wildfly.dir>
+
+        <deploy.jboss.host>127.0.0.1</deploy.jboss.host>
+        <deploy.jboss.port>9990</deploy.jboss.port>
+        <deploy.jboss.username>wildfly</deploy.jboss.username>
+        <deploy.jboss.password>wildfly</deploy.jboss.password>
     </properties>
 
     <profiles>
@@ -28,16 +33,10 @@
                         <artifactId>wildfly-maven-plugin</artifactId>
                         <version>${wildfly-maven-plugin.version}</version>
                         <configuration>
-                            <feature-packs>
-                                <feature-pack>
-                                    <location>org.wildfly:wildfly-galleon-pack:31.0.0.Final</location>
-                                </feature-pack>
-                            </feature-packs>
-                            <!--jboss-home>${local.wildfly.dir}</jboss-home-->
-                            <hostname>localhost</hostname>
-                            <port>9990</port>
-                            <username>admin</username>
-                            <password>1234</password>
+                            <hostname>${deploy.jboss.host}</hostname>
+                            <port>${deploy.jboss.port}</port>
+                            <username>${deploy.jboss.username}</username>
+                            <password>${deploy.jboss.password}</password>
                         </configuration>
                         <executions>
                             <execution>
@@ -50,9 +49,9 @@
                                 </goals>
                                 <configuration>
                                     <batch>false</batch>
-                                    <scripts>
+                                    <!--scripts>
                                         <script>${project.basedir}/src/main/resources/configuration.cli</script>
-                                    </scripts>
+                                    </scripts-->
                                 </configuration>
                             </execution>
                         </executions>
