@@ -27,7 +27,8 @@
         <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
         <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
         <springframework.boot.version>3.2.2</springframework.boot.version>
-        <springfox.version>3.0.0</springfox.version>
+        <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version><!-- mit version 5.10.1 intelij spinnt -->
         <junit-platform.version>1.9.3</junit-platform.version>
         <h2database.version>2.2.224</h2database.version>
@@ -102,16 +103,22 @@
                 <artifactId>jakarta.servlet-api</artifactId>
                 <version>${jakarta.servlet-api.version}</version>
             </dependency>
-            <!-- springfox -->
+            <!-- swagger v3 -->
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${springfox.version}</version>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
+            </dependency>
+            <!-- swagger v3 -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox.version}</version>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
             <!-- BEGIN TESTS database-rider -->
             <dependency>
