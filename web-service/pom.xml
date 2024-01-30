@@ -15,6 +15,10 @@
     <dependencies>
         <dependency>
             <groupId>at.shtrans</groupId>
+            <artifactId>domain-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.shtrans</groupId>
             <artifactId>service</artifactId>
         </dependency>
         <!-- jakarta -->
@@ -27,14 +31,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- springfox -->
+        <!-- swagger v3 -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
         </dependency>
     </dependencies>
 

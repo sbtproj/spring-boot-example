@@ -1,4 +1,4 @@
-package at.shtrans.swagger2.configuration;
+/*package at.shtrans.swagger2.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,3 +46,5 @@ public class SwaggerConfiguration {
 
     // https://github.com/eugenp/tutorials/blob/master/spring-boot-modules/spring-boot-swagger-springfox/src/main/java/com/baeldung/swagger2/SwaggerConfig.java
 }
+
+ */
