@@ -11,16 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 @EntityScan("at.shtrans.domain")
-@ComponentScan("at.shtrans")
-@EnableTransactionManagement
 @EnableJpaRepositories("at.shtrans.repository")
-@SpringBootApplication(scanBasePackages = {"at.shtrans.service", "at.shtrans.repository", "at.shtrans.rest.controller"},
-scanBasePackageClasses = {CustomerRestController.class})
+@EnableTransactionManagement
+@SpringBootApplication(scanBasePackages = {"at.shtrans.service", "at.shtrans.rest.controller"})
 @OpenAPIDefinition(info = @Info(title = "Employees API", version = "2.0", description = "Employees Information"))
 public class SpringBootWebServiceApplication extends SpringBootServletInitializer {
 
