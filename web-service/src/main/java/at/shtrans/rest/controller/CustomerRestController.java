@@ -12,16 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/")
 public class CustomerRestController {
 
     @Autowired
     private CustomerService customerService;
-
+/*
     @GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
     public String index() {
 
         return "Hello there";
     }
+
+ */
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET, produces = "application/json")
     public List<CustomerDTO> customers() {
