@@ -1,25 +1,18 @@
 package at.shtrans.springboot;
 
-
-import at.shtrans.rest.controller.CustomerRestController;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Info;
+import at.shtrans.configuration.SpringBootRepositoryConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
-@EntityScan("at.shtrans.domain")
-@EnableJpaRepositories("at.shtrans.repository")
 @EnableTransactionManagement
 @SpringBootApplication(scanBasePackages = {"at.shtrans.service", "at.shtrans.rest.controller"})
-@OpenAPIDefinition(info = @Info(title = "Employees API", version = "2.0", description = "Employees Information"))
+@Import({ SpringBootRepositoryConfiguration.class })
 public class SpringBootWebServiceApplication extends SpringBootServletInitializer {
 
     private static Logger LOG = LoggerFactory.getLogger(SpringBootWebServiceApplication.class);
@@ -38,5 +31,4 @@ public class SpringBootWebServiceApplication extends SpringBootServletInitialize
     protected SpringApplicationBuilder configure(SpringApplicationBuilder springApplicationBuilder) {
         return springApplicationBuilder.sources(applicationClass);
     }
-
 }
