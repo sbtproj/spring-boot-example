@@ -1,0 +1,9 @@
+
+http://localhost:8080/web-service-1.0-SNAPSHOT/api/customers
+
+
+https://www.bezkoder.com/spring-boot-swagger-3/
+
+http://localhost:8080/web-service-1.0-SNAPSHOT/v3/api-docs
+
+http://localhost:8080/web-service-1.0-SNAPSHOT/swagger-ui/index.html             ??????
