@@ -1,4 +1,4 @@
-package at.shtrans.swagger;
+package at.shtrans.rest.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -10,7 +10,7 @@ import io.swagger.v3.oas.models.info.Info;
 import java.util.List;
 
 @Configuration
-public class SwaggerConfiguration {
+public class SpringBootSwaggerConfiguration {
 
     @Value("${project.version}")
     private String projectVersion;
