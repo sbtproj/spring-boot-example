@@ -6,3 +6,6 @@ http://localhost:8080/web-service-1.0-SNAPSHOT/v3/api-docs
 http://localhost:8080/web-service-1.0-SNAPSHOT/swagger-ui/index.html
 
 https://www.bezkoder.com/spring-boot-swagger-3/
+
+?????
+https://github.com/eugenp/tutorials/blob/master/spring-boot-modules/spring-boot-swagger-springfox/src/main/java/com/baeldung/swagger2/SwaggerConfig.java
