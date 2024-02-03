@@ -1,7 +1,6 @@
-package at.shtrans.springboot;
+package at.shtrans.rest.configuration;
 
 import at.shtrans.configuration.SpringBootRepositoryConfiguration;
-import at.shtrans.swagger.SwaggerConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -13,12 +12,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @SpringBootApplication(scanBasePackages = {"at.shtrans.service", "at.shtrans.rest.controller"})
-@Import({ SpringBootRepositoryConfiguration.class, SwaggerConfiguration.class })
-public class SpringBootWebServiceApplication extends SpringBootServletInitializer {
+@Import({ SpringBootRepositoryConfiguration.class, SpringBootSwaggerConfiguration.class })
+public class SpringBootApplicationInitializer extends SpringBootServletInitializer {
 
-    private static Logger LOG = LoggerFactory.getLogger(SpringBootWebServiceApplication.class);
+    private static Logger LOG = LoggerFactory.getLogger(SpringBootApplicationInitializer.class);
 
-    private static Class<SpringBootWebServiceApplication> applicationClass = SpringBootWebServiceApplication.class;
+    private static Class<SpringBootApplicationInitializer> applicationClass = SpringBootApplicationInitializer.class;
 
     public static void main(String[] args) {
         LOG.info("STARTING THE APPLICATION");
