@@ -21,17 +21,19 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        <!-- dependencies -->
         <database-rider.version>1.41.0</database-rider.version>
         <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
         <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
         <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
         <springframework.boot.version>3.2.2</springframework.boot.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <springdoc.version>2.3.0</springdoc.version>
+        <jakarta.xml.bind-api.version>4.0.1</jakarta.xml.bind-api.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version><!-- mit version 5.10.1 intelij spinnt -->
         <junit-platform.version>1.9.3</junit-platform.version>
         <h2database.version>2.2.224</h2database.version>
-        <!-- maven plugins -->
+        <!-- plugins -->
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
     </properties>
@@ -113,6 +115,17 @@
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
+            <!-- swagger -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
             <!-- BEGIN TESTS database-rider -->
             <dependency>
                 <groupId>com.github.database-rider</groupId>
@@ -174,5 +187,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
