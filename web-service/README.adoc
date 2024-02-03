@@ -1,5 +1,5 @@
 
-http://localhost:8080/web-service-1.0-SNAPSHOT/api/customers
+http://localhost:8080/web-service-1.0-SNAPSHOT/customers/
 
 http://localhost:8080/web-service-1.0-SNAPSHOT/v3/api-docs
 
