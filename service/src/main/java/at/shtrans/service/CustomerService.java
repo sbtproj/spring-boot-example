@@ -16,29 +16,47 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public CustomerDTO save(CustomerDTO customerDTO){
-        //throw new NotImplementedException("save");
-        return null;
+    private final CustomerMapper customerMapper = Mappers.getMapper(CustomerMapper.class);
+
+
+    public CustomerDTO create(CustomerDTO customerDTO){
+
+        Customer customer = customerRepository.saveAndFlush(customerMapper.toDomain(customerDTO));
+
+        return customerMapper.toDto(customer);
     }
 
     public CustomerDTO update(CustomerDTO customerDTO){
-        //throw new NotImplementedException("update");
-        return null;
+
+        if(customerRepository.existsById(customerDTO.getId())){
+
+        }
+
+        Customer customer = customerRepository.saveAndFlush(customerMapper.toDomain(customerDTO));
+
+        return customerMapper.toDto(customer);
     }
 
     public Long delete(CustomerDTO customerDTO){
-        //throw new NotImplementedException("delete");
-        return null;
+
+        if(customerRepository.existsById(customerDTO.getId())){
+            customerRepository.deleteById(customerDTO.getId());
+        }
+
+        return customerDTO.getId();
     }
 
     public Long deleteById(Long customerId){
-        //throw new NotImplementedException("customerId");
-        return null;
+
+        if(customerRepository.existsById(customerId)){
+            customerRepository.deleteById(customerId);
+        }
+
+        return customerId;
     }
 
     public List<CustomerDTO> findAll(){
 
-        CustomerMapper customerMapper = Mappers.getMapper(CustomerMapper.class);
         List<Customer> customerList = customerRepository.findAll();
 
         return customerMapper.toDtoList(customerList);
