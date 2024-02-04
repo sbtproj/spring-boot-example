@@ -16,7 +16,6 @@ import static at.shtrans.ParameterChecker.checkParameterNonNull;
 @Service
 public class CustomerService {
 
-
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -76,6 +75,14 @@ public class CustomerService {
         List<Customer> customerList = customerRepository.findAll();
 
         return customerMapper.toDtoList(customerList);
+    }
+
+    public CustomerDTO findById(Long customerId) {
+        checkParameterNonNull(customerId, "customerId");
+
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        return customerMapper.toDto(customerOptional.get());
     }
 
     public List<CustomerDTO> findByFirstName(String firstName) {

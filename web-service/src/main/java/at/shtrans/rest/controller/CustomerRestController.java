@@ -3,6 +3,7 @@ package at.shtrans.rest.controller;
 import at.shtrans.dto.CustomerDTO;
 import at.shtrans.rest.mapper.CustomerRequestResponseMapper;
 import at.shtrans.rest.request.CustomerRequest;
+import at.shtrans.rest.response.CustomerResponse;
 import at.shtrans.rest.response.RestResponse;
 import at.shtrans.service.CustomerService;
 import jakarta.validation.Valid;
@@ -33,28 +34,43 @@ public class CustomerRestController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
-    public List<CustomerDTO> allCustomers() {
-        return customerService.findAll();
+    public List<CustomerResponse> allCustomers() {
+
+        List<CustomerDTO> resultList = customerService.findAll();
+
+        return mapper.toResponseList(resultList);
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public CustomerDTO findById(@PathVariable(value = "id") Long id) {
-        return getTestDto();
+    public CustomerResponse findById(@PathVariable(value = "id") Long id) {
+
+        CustomerDTO result= customerService.findById(id);
+
+        return mapper.toResponse(result);
     }
 
     @GetMapping(value = "/firstName/{firstName}", produces = "application/json")
-    public CustomerDTO findByFirstName(@PathVariable(value = "firstName") String firstName) {
-        return getTestDto();
+    public List<CustomerResponse> findByFirstName(@PathVariable(value = "firstName") String firstName) {
+
+        List<CustomerDTO> resultList = customerService.findByFirstName(firstName);
+
+        return mapper.toResponseList(resultList);
     }
 
     @GetMapping(value = "/lastName/{lastName}", produces = "application/json")
-    public CustomerDTO findByLastName(@PathVariable(value = "lastName") String lastName) {
-        return getTestDto();
+    public List<CustomerResponse> findByLastName(@PathVariable(value = "lastName") String lastName) {
+
+        List<CustomerDTO> resultList = customerService.findByLastName(lastName);
+
+        return mapper.toResponseList(resultList);
     }
 
     @GetMapping(value = "/version/{version}", produces = "application/json")
-    public CustomerDTO findByVersion(@PathVariable(value = "version") Integer version) {
-        return getTestDto();
+    public List<CustomerResponse> findByVersion(@PathVariable(value = "version") Integer version) {
+
+        List<CustomerDTO> resultList = customerService.findByVersion(version);
+
+        return mapper.toResponseList(resultList);
     }
 
     @PostMapping(value = "/create", produces = "application/json")
@@ -75,22 +91,12 @@ public class CustomerRestController {
 
     @DeleteMapping(value ="/delete/{id}",  produces = "application/json")
     public Long deleteById(@PathVariable(value = "id") Long id){
-        return 8L;
+        return customerService.deleteById(id);
     }
 
     @DeleteMapping(value ="/delete/", produces = "application/json")
-    public Long delete(@RequestBody @Valid CustomerDTO customer) {
-
-        return 8L;
-    }
-
-     private CustomerDTO getTestDto(){
-        CustomerDTO dto = new CustomerDTO();
-        dto.setId(1L);
-        dto.setVersion(1);
-        dto.setFirstName("FirstName");
-        dto.setLastName("LastName");
-        return dto;
+    public Long delete(@RequestBody @Valid CustomerRequest customerRequest) {
+        return customerService.delete(mapper.toDto(customerRequest));
     }
 
 }

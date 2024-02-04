@@ -9,3 +9,7 @@ https://www.bezkoder.com/spring-boot-swagger-3/
 
 ?????
 https://github.com/eugenp/tutorials/blob/master/spring-boot-modules/spring-boot-swagger-springfox/src/main/java/com/baeldung/swagger2/SwaggerConfig.java
+
+https://howtodoinjava.com/spring-boot/spring-rest-request-validation/
+
+https://www.javatpoint.com/restful-web-services-validations
