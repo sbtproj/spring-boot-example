@@ -18,7 +18,7 @@ import java.util.StringJoiner;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CUSTOMER")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SEQ_CUSTOMER")
     @Column(name = "id", unique = true, nullable = false, updatable = false)
     private Long id;
 
