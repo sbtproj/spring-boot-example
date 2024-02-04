@@ -24,7 +24,7 @@ public class Customer {
 
     @Version
     @Column(nullable = false)
-    private final Integer version = 0;
+    private Integer version = 0;
 
     @Column(name = "first_name")
     private String firstName;
@@ -38,6 +38,14 @@ public class Customer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public String getFirstName() {
