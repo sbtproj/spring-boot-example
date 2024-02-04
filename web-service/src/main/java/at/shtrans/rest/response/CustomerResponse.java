@@ -7,8 +7,7 @@ import java.util.Objects;
 public class CustomerResponse extends RestResponse {
 
     public CustomerResponse() {
-        super.setStatus(HttpStatus.OK);
-        super.setMessage("The request was completed successfully!");
+        super(HttpStatus.OK, "The request was completed successfully!");
     }
 
     private Long id;

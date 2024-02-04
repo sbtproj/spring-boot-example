@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -30,11 +31,14 @@ public class CustomerService {
 
         if(customerRepository.existsById(customerDTO.getId())){
 
+            Optional<Customer> customerOptional = customerRepository.findById(customerDTO.getId());
+            Customer customer
+                    = customerRepository.saveAndFlush(customerMapper.toDomain(customerDTO, customerOptional.get()));
+
+            return customerMapper.toDto(customer);
         }
 
-        Customer customer = customerRepository.saveAndFlush(customerMapper.toDomain(customerDTO));
-
-        return customerMapper.toDto(customer);
+        return null;
     }
 
     public Long delete(CustomerDTO customerDTO){

@@ -7,6 +7,14 @@ import org.springframework.http.HttpStatus;
 
 public class RestResponse {
 
+    public RestResponse() {
+    }
+
+    public RestResponse(HttpStatus status, String message) {
+        this.status = status;
+        this.message = message;
+    }
+
     private HttpStatus status;
 
     private final Date date = new Date();
