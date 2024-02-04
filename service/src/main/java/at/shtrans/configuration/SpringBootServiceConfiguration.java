@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 
 
 @Configuration
-@ComponentScan("at.shtrans.service")
+@ComponentScan(basePackages = {"at.shtrans.service", "at.shtrans.repository"})
 @Import({ SpringBootRepositoryConfiguration.class})
 public class SpringBootServiceConfiguration {
 
