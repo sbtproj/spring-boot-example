@@ -2,8 +2,10 @@ package at.shtrans.rest.controller;
 
 import at.shtrans.dto.CustomerDTO;
 import at.shtrans.exception.ServiceException;
+import at.shtrans.rest.mapper.CustomerRequestResponseMapper;
 import at.shtrans.service.CustomerService;
 import jakarta.validation.Valid;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,25 +29,29 @@ public class CustomerRestController {
     @Autowired
     private CustomerService customerService;
 
+    private final CustomerRequestResponseMapper mapper
+            = Mappers.getMapper(CustomerRequestResponseMapper.class);
+
+
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<CustomerDTO>> allCustomers() {
+    public ResponseEntity<List<CustomerResource>> allCustomers() {
 
         List<CustomerDTO> resultList = customerService.findAll();
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(resultList);
+                .body(mapper.toResourceList(resultList));
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<CustomerDTO> findById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<CustomerResource> findById(@PathVariable(value = "id") Long id) {
 
         try {
             CustomerDTO customer = customerService.findById(id);
-            // Return the updated resource with a 200 (OK) status code
+            // Return the updated resource with a 200 (OK) status
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(customer);
+                    .body(mapper.toResource(customer));
         } catch (ServiceException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -54,54 +60,54 @@ public class CustomerRestController {
     }
 
     @GetMapping(value = "/firstName/{firstName}", produces = "application/json")
-    public ResponseEntity<List<CustomerDTO>> findByFirstName(@PathVariable(value = "firstName") String firstName) {
+    public ResponseEntity<List<CustomerResource>> findByFirstName(@PathVariable(value = "firstName") String firstName) {
 
         List<CustomerDTO> resultList = customerService.findByFirstName(firstName);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(resultList);
+                .body(mapper.toResourceList(resultList));
     }
 
     @GetMapping(value = "/lastName/{lastName}", produces = "application/json")
-    public ResponseEntity<List<CustomerDTO>> findByLastName(@PathVariable(value = "lastName") String lastName) {
+    public ResponseEntity<List<CustomerResource>> findByLastName(@PathVariable(value = "lastName") String lastName) {
 
         List<CustomerDTO> resultList = customerService.findByLastName(lastName);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(resultList);
+                .body(mapper.toResourceList(resultList));
     }
 
     @GetMapping(value = "/version/{version}", produces = "application/json")
-    public ResponseEntity<List<CustomerDTO>> findByVersion(@PathVariable(value = "version") Integer version) {
+    public ResponseEntity<List<CustomerResource>> findByVersion(@PathVariable(value = "version") Integer version) {
 
         List<CustomerDTO> resultList = customerService.findByVersion(version);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(resultList);
+                .body(mapper.toResourceList(resultList));
     }
 
     @PostMapping(value = "/create", produces = "application/json")
-    public ResponseEntity<CustomerDTO> create(@Valid @RequestBody CustomerDTO customer) {
+    public ResponseEntity<CustomerResource> create(@Valid @RequestBody CustomerDTO customer) {
 
         CustomerDTO customerDTO = customerService.create(customer);
         // Return the created resource with a 201 (created) status code
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(customerDTO);
+                .body(mapper.toResource(customer));
     }
 
     @PutMapping(value = "/update", produces = "application/json")
-    public ResponseEntity<CustomerDTO> update(@Valid @RequestBody CustomerDTO customer) {
+    public ResponseEntity<CustomerResource> update(@Valid @RequestBody CustomerResource customerResource) {
 
         try {
-            CustomerDTO customerDTO = customerService.update(customer);
+            CustomerDTO customerDTO = customerService.update(mapper.toDto(customerResource));
             // Return the updated resource with a 200 (OK) status code
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(customerDTO);
+                    .body(mapper.toResource(customerDTO));
         } catch (ServiceException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -127,10 +133,10 @@ public class CustomerRestController {
     }
 
     @DeleteMapping(value = "/delete/", produces = "application/json")
-    public ResponseEntity<Long> delete(@Valid @RequestBody CustomerDTO customer) {
+    public ResponseEntity<Long> delete(@Valid @RequestBody CustomerResource customerResource) {
 
         try {
-            Long deletedObjectId = customerService.delete(customer);
+            Long deletedObjectId = customerService.delete(mapper.toDto(customerResource));
             // Return a 204 (no content) status code
             return ResponseEntity
                     .status(HttpStatus.NO_CONTENT)

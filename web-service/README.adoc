@@ -18,3 +18,5 @@ ResponseEntity:
 https://medium.com/@daryl-goh/spring-boot-requestentity-vs-responseentity-requestbody-vs-responsebody-dc808fb0d86c
 
 https://www.javatpoint.com/restful-web-services-validations
+
+CustomerResource
