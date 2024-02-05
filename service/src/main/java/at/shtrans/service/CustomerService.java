@@ -2,6 +2,7 @@ package at.shtrans.service;
 
 import at.shtrans.domain.Customer;
 import at.shtrans.dto.CustomerDTO;
+import at.shtrans.exception.ServiceException;
 import at.shtrans.mapper.CustomerMapper;
 import at.shtrans.repository.CustomerRepository;
 import org.mapstruct.factory.Mappers;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static at.shtrans.ParameterChecker.checkParameterNonNull;
+import static at.shtrans.ServiceParameterChecker.checkParameterNonNull;
 
 @Service
 public class CustomerService {
@@ -21,7 +22,7 @@ public class CustomerService {
 
     private final CustomerMapper customerMapper = Mappers.getMapper(CustomerMapper.class);
 
-    public CustomerDTO create(CustomerDTO customerDTO) {
+    public CustomerDTO create(CustomerDTO customerDTO) throws ServiceException {
         checkParameterNonNull(customerDTO, "customerDTO");
         checkParameterNonNull(customerDTO.getFirstName(), "firstName");
         checkParameterNonNull(customerDTO.getLastName(), "lastName");
@@ -31,40 +32,42 @@ public class CustomerService {
         return customerMapper.toDto(customer);
     }
 
-    public CustomerDTO update(CustomerDTO customerDTO) {
+    public CustomerDTO update(CustomerDTO customerDTO) throws ServiceException {
         checkParameterNonNull(customerDTO, "customerDTO");
         checkParameterNonNull(customerDTO.getId(), "id");
         checkParameterNonNull(customerDTO.getFirstName(), "firstName");
         checkParameterNonNull(customerDTO.getLastName(), "lastName");
 
-        if (customerRepository.existsById(customerDTO.getId())) {
-
-            Optional<Customer> customerOptional = customerRepository.findById(customerDTO.getId());
-            Customer customer
-                    = customerRepository.saveAndFlush(customerMapper.toDomain(customerDTO, customerOptional.get()));
-
-            return customerMapper.toDto(customer);
+        if (!customerRepository.existsById(customerDTO.getId())) {
+            throw new ServiceException("Customer", customerDTO.getId());
         }
 
-        return null;
+        Optional<Customer> customerOptional = customerRepository.findById(customerDTO.getId());
+        Customer customer
+                = customerRepository.saveAndFlush(customerMapper.toDomain(customerDTO, customerOptional.get()));
+            return customerMapper.toDto(customer);
     }
 
-    public Long delete(CustomerDTO customerDTO) {
+    public Long delete(CustomerDTO customerDTO) throws ServiceException {
         checkParameterNonNull(customerDTO, "customerDTO");
         checkParameterNonNull(customerDTO.getId(), "id");
 
-        if (customerRepository.existsById(customerDTO.getId())) {
-            customerRepository.deleteById(customerDTO.getId());
+        if (!customerRepository.existsById(customerDTO.getId())) {
+            throw new ServiceException("Customer", customerDTO.getId());
         }
+
+        customerRepository.deleteById(customerDTO.getId());
 
         return customerDTO.getId();
     }
 
-    public Long deleteById(Long customerId) {
+    public Long deleteById(Long customerId) throws ServiceException {
         checkParameterNonNull(customerId, "customerId");
 
         if (customerRepository.existsById(customerId)) {
             customerRepository.deleteById(customerId);
+        }else{
+            throw new ServiceException("Customer", customerId);
         }
 
         return customerId;
@@ -77,15 +80,19 @@ public class CustomerService {
         return customerMapper.toDtoList(customerList);
     }
 
-    public CustomerDTO findById(Long customerId) {
+    public CustomerDTO findById(Long customerId) throws ServiceException {
         checkParameterNonNull(customerId, "customerId");
 
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
+        if (customerOptional.isEmpty()) {
+            throw new ServiceException("Customer", customerId);
+        }
+
         return customerMapper.toDto(customerOptional.get());
     }
 
-    public List<CustomerDTO> findByFirstName(String firstName) {
+    public List<CustomerDTO> findByFirstName(String firstName) throws ServiceException {
         checkParameterNonNull(firstName, "firstName");
 
         List<Customer> customerList = customerRepository.findByFirstName(firstName);
@@ -93,7 +100,7 @@ public class CustomerService {
         return customerMapper.toDtoList(customerList);
     }
 
-    public List<CustomerDTO> findByLastName(String lastName) {
+    public List<CustomerDTO> findByLastName(String lastName) throws ServiceException {
         checkParameterNonNull(lastName, "lastName");
 
         List<Customer> customerList = customerRepository.findByLastName(lastName);
@@ -101,7 +108,7 @@ public class CustomerService {
         return customerMapper.toDtoList(customerList);
     }
 
-    public List<CustomerDTO> findByVersion(Integer version) {
+    public List<CustomerDTO> findByVersion(Integer version) throws ServiceException {
         checkParameterNonNull(version, "version");
 
         List<Customer> customerList = customerRepository.findByVersion(version);
