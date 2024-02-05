@@ -12,4 +12,9 @@ https://github.com/eugenp/tutorials/blob/master/spring-boot-modules/spring-boot-
 
 https://howtodoinjava.com/spring-boot/spring-rest-request-validation/
 
+https://github.com/lokeshgupta1981/Spring-Boot3-Demos/blob/main/declarative-validation/src/main/java/com/howtodoinjava/app/web/EmployeeController.java
+
+ResponseEntity:
+https://medium.com/@daryl-goh/spring-boot-requestentity-vs-responseentity-requestbody-vs-responsebody-dc808fb0d86c
+
 https://www.javatpoint.com/restful-web-services-validations
