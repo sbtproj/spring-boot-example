@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static at.shtrans.ServiceParameterChecker.checkParameterNonNull;
+import static at.shtrans.ParameterChecker.checkParameterNonNull;
 
 @Service
 public class CustomerService {
@@ -22,7 +22,7 @@ public class CustomerService {
 
     private final CustomerMapper customerMapper = Mappers.getMapper(CustomerMapper.class);
 
-    public CustomerDTO create(CustomerDTO customerDTO) throws ServiceException {
+    public CustomerDTO create(CustomerDTO customerDTO) {
         checkParameterNonNull(customerDTO, "customerDTO");
         checkParameterNonNull(customerDTO.getFirstName(), "firstName");
         checkParameterNonNull(customerDTO.getLastName(), "lastName");
@@ -92,7 +92,7 @@ public class CustomerService {
         return customerMapper.toDto(customerOptional.get());
     }
 
-    public List<CustomerDTO> findByFirstName(String firstName) throws ServiceException {
+    public List<CustomerDTO> findByFirstName(String firstName) {
         checkParameterNonNull(firstName, "firstName");
 
         List<Customer> customerList = customerRepository.findByFirstName(firstName);
@@ -100,7 +100,7 @@ public class CustomerService {
         return customerMapper.toDtoList(customerList);
     }
 
-    public List<CustomerDTO> findByLastName(String lastName) throws ServiceException {
+    public List<CustomerDTO> findByLastName(String lastName) {
         checkParameterNonNull(lastName, "lastName");
 
         List<Customer> customerList = customerRepository.findByLastName(lastName);
@@ -108,7 +108,7 @@ public class CustomerService {
         return customerMapper.toDtoList(customerList);
     }
 
-    public List<CustomerDTO> findByVersion(Integer version) throws ServiceException {
+    public List<CustomerDTO> findByVersion(Integer version) {
         checkParameterNonNull(version, "version");
 
         List<Customer> customerList = customerRepository.findByVersion(version);
