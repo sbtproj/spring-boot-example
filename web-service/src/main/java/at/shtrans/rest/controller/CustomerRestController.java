@@ -90,13 +90,13 @@ public class CustomerRestController {
     }
 
     @PostMapping(value = "/create", produces = "application/json")
-    public ResponseEntity<CustomerResource> create(@Valid @RequestBody CustomerDTO customer) {
+    public ResponseEntity<CustomerResource> create(@Valid @RequestBody CustomerResource customerResource) {
 
-        CustomerDTO customerDTO = customerService.create(customer);
+        CustomerDTO customerDTO = customerService.create(mapper.toDto(customerResource));
         // Return the created resource with a 201 (created) status code
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(mapper.toResource(customer));
+                .body(mapper.toResource(customerDTO));
     }
 
     @PutMapping(value = "/update", produces = "application/json")
