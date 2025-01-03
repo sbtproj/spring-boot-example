@@ -21,6 +21,8 @@ https://www.javatpoint.com/restful-web-services-validations
 
 CustomerResource
 
+Angular:
+https://medium.com/@AlexanderObregon/integrating-spring-boot-with-front-end-frameworks-angular-and-react-cd2fe1088e61
 
 Security :
 https://www.baeldung.com/spring-enablewebsecurity-vs-enableglobalmethodsecurity
