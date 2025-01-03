@@ -20,3 +20,16 @@ https://medium.com/@daryl-goh/spring-boot-requestentity-vs-responseentity-reques
 https://www.javatpoint.com/restful-web-services-validations
 
 CustomerResource
+
+
+Security :
+https://www.baeldung.com/spring-security-check-user-role
+https://www.baeldung.com/spring-security-method-security
+https://developer.okta.com/blog/2019/06/20/spring-preauthorize
+https://ertan-toker.de/spring-boot-spring-security-jwt-token/
+https://www.geeksforgeeks.org/spring-security-role-based-authentication/
+https://stackoverflow.com/questions/77745018/how-do-i-make-all-of-my-requestmapping-as-preauthorizeisauthenticated-by
+https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html
+
+
+
