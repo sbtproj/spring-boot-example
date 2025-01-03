@@ -29,7 +29,7 @@
         <springframework.boot.version>3.2.2</springframework.boot.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <springdoc.version>2.3.0</springdoc.version>
-        <jakarta.xml.bind-api.version>4.0.1</jakarta.xml.bind-api.version>
+        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version><!-- mit version 5.10.1 intelij spinnt -->
         <junit-platform.version>1.9.3</junit-platform.version>
         <h2database.version>2.2.224</h2database.version>
