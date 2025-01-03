@@ -23,6 +23,7 @@ CustomerResource
 
 
 Security :
+https://www.baeldung.com/spring-enablewebsecurity-vs-enableglobalmethodsecurity
 https://www.baeldung.com/spring-security-check-user-role
 https://www.baeldung.com/spring-security-method-security
 https://developer.okta.com/blog/2019/06/20/spring-preauthorize
