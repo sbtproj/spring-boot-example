@@ -2,9 +2,15 @@
 How to Install Angular on Ubuntu 24.04: Step by Step
 https://greenwebpage.com/community/how-to-install-angular-on-ubuntu-24-04/
 
-./workspace/spring-boot-example/angular-fe$ npm start
+./workspace/spring-boot-example/angular-fe$ ng serve --open oder npm start
 
 http://localhost:4200
 
+Angular
+https://angular.dev/tools/cli/setup-local
+
 Angular Java Example
 https://github.com/marco76/java-angular-basic/tree/master/frontend
+
+https://github.com/angular/examples/tree/main/walk-my-dog
+
