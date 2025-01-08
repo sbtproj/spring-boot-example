@@ -14,3 +14,8 @@ https://github.com/marco76/java-angular-basic/tree/master/frontend
 
 https://github.com/angular/examples/tree/main/walk-my-dog
 
+Angular Deployment in wildfly server
+https://www.ionicframeworks.com/2017/11/angular-deployment-in-wildfly-server.html
+
+Example
+https://www.mastertheboss.com/java-ee/jakarta-ee/jakarta-ee-10-application-with-an-angular-frontend/

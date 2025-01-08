@@ -1,0 +1,5 @@
+= Angular Basic Commands
+https://github.com/angular/examples/tree/main/walk-my-dog
+
+== Development serverb
+Run *ng serve --open*  for a dev server. Navigate to http://localhost:4200/
