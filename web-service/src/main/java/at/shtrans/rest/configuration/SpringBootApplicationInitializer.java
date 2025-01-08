@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @SpringBootApplication(scanBasePackages = {"at.shtrans.rest.controller"})
-@Import({SpringBootServiceConfiguration.class, SpringBootSwaggerConfiguration.class})
+@Import({SpringBootServiceConfiguration.class,
+        SpringBootSwaggerConfiguration.class,
+        SpringBootBasicAuthSecurityConfiguration.class})
 public class SpringBootApplicationInitializer extends SpringBootServletInitializer {
 
     private static final Logger LOG = LoggerFactory.getLogger(SpringBootApplicationInitializer.class);
