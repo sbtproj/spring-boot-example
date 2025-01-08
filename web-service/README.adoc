@@ -26,6 +26,7 @@ https://medium.com/@AlexanderObregon/integrating-spring-boot-with-front-end-fram
 https://medium.com/@aleksei_golubev/web-application-structure-angular-spring-boot-feddf9bf253e
 
 Security :
+https://github.com/eugenp/tutorials/blob/master/spring-security-modules/spring-security-authorization/spring-security-secure-domain-object/src/main/java/com/baeldung/config/SecurityConfiguration.java
 https://www.baeldung.com/spring-security-oauth-cognito
 https://www.propelauth.com/post/spring-boot-auth
 https://softwareengineering.stackexchange.com/questions/422071/communicating-state-from-the-backend-to-the-frontend-while-the-user-is-logged-in
