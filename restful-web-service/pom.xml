@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>web-service</artifactId>
+    <artifactId>restful-web-service</artifactId>
     <packaging>war</packaging>
 
     <dependencies>

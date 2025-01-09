@@ -14,7 +14,7 @@
         <module>domain-model</module>
         <module>repository</module>
         <module>service</module>
-        <module>web-service</module>
+        <module>restful-web-service</module>
     </modules>
 
     <properties>
