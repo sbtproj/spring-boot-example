@@ -1,8 +1,5 @@
 package at.shtrans.frontend.configuration;
 
-import at.shtrans.frontend.api.service.CustomerApiService;
-import at.shtrans.frontend.controller.CustomerController;
-import at.shtrans.frontend.controller.JsfController;
 import jakarta.faces.webapp.FacesServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,12 +10,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = { JsfController.class, CustomerController.class, CustomerApiService.class })
+@ComponentScan(basePackages = {"at.shtrans.frontend.beans", "at.shtrans.frontend.api.service"})
 @Import({SpringBootRestClientConfiguration.class})
-public class JsfApplication extends SpringBootServletInitializer {
+public class SpringBootJsfApplicationInitializer extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(JsfApplication.class, args);
+        SpringApplication.run(SpringBootJsfApplicationInitializer.class, args);
     }
 
     @Bean
