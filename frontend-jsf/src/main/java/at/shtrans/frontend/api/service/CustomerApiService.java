@@ -18,6 +18,14 @@ public class CustomerApiService {
 
     String url ="customer/";
 
+    public Customer create(Customer customer) {
+        return restClient.post() // Angeben, dass dies eine GET-Anfrage ist
+                .uri(url + "/create") // URI für die Anfrage festlegen
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve() // Anfrage ausführen und Antwort abrufen
+                .body(Customer.class); // Antworttext als Customer extrahieren
+    }
+
     public Customer getById(Long id) {
         return restClient.get() // Angeben, dass dies eine GET-Anfrage ist
                 .uri(url + "/{id}",id) // URI für die Anfrage festlegen
@@ -26,7 +34,7 @@ public class CustomerApiService {
                 .body(Customer.class); // Antworttext als Customer extrahieren
     }
 
-    public List<Customer> getAll(Long id) {
+    public List<Customer> getAll() {
         return restClient.get() // Angeben, dass dies eine GET-Anfrage ist
                 .uri(url) // URI für die Anfrage
                 .accept(MediaType.APPLICATION_JSON)

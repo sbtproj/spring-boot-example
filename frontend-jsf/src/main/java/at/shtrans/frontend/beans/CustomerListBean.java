@@ -4,8 +4,8 @@ import at.shtrans.frontend.api.service.CustomerApiService;
 import at.shtrans.frontend.model.Customer;
 import jakarta.annotation.ManagedBean;
 import jakarta.faces.view.ViewScoped;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
@@ -15,14 +15,14 @@ import java.util.List;
 @ViewScoped
 public class CustomerListBean implements Serializable {
 
-    private static Log log = LogFactory.getLog(CustomerListBean.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerListBean.class);
 
     @Autowired
     private CustomerApiService customerApiService;
 
     public List<Customer> getCustomers() {
         List<Customer> customers = customerApiService.getAll();
-        log.info("getAll() -> " + customers.toString());
+        LOGGER.info("getAll() -> " + customers.toString());
 
         return customers;
     }

@@ -2,40 +2,26 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="jakarta.faces.core"
-      xmlns:jsf="jakarta.faces"
       xmlns:h="jakarta.faces.html">
 <f:view>
     <h:head>
-        <title>Hello, Faces 4.0!</title>
+        <title>Create New Customer</title>
     </h:head>
     <h:body>
-        <h1>Create new customer</h1>
+        <h1>Create New Customer</h1>
         <h:form id="form" role="form" class="form">
+
             <div>
-                <label jsf:for="firstName">First Name:</label>
-                <input type="text"
-                       jsf:id="firstName"
-                       jsf:value="#{customerController.customer.firstName}"
-                       jsf:required="true"
-                       jsf:requiredMessage="First Name is required."
-                       placeholder="Type task name here...">
-                </input>
+                <h:outputLabel for="firstName" >First name</h:outputLabel>
+                <h:inputText id="firstName" value="#{customerBean.customer.firstName}" placeholder="First Name"/>
             </div>
             <div>
-                <label jsf:for="lastName">Last Name:</label>
-                <input type="text"
-                       jsf:id="lastName"
-                       jsf:value="#{customerController.customer.lastName}"
-                       jsf:required="true"
-                       jsf:requiredMessage="Last Name is required."
-                       placeholder="Type task name here...">
-                </input>
+                <h:outputLabel for="lastName" >First name</h:outputLabel>
+                <h:inputText id="lastName" value="#{customerBean.customer.lastName}" placeholder="LastName Name"/>
             </div>
 
             <div class="form-group">
-                <h:commandButton id="submitTask" type="submit"
-                                 styleClass="btn btn-lg btn-primary"
-                                 action="#{customerController.save()}" value="Save Task"></h:commandButton>
+                <h:commandButton id="submitTask" type="submit" action="#{customerBean.create()}" value="Save Customer"/>
             </div>
         </h:form>
     </h:body>
