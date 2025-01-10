@@ -23,6 +23,7 @@ public class SpringBootJsfApplicationInitializer extends SpringBootServletInitia
         FacesServlet servlet = new FacesServlet();
         ServletRegistrationBean servletRegistrationBean =
                 new ServletRegistrationBean(servlet, "*.xhtml");
+
         return servletRegistrationBean;
     }
 
