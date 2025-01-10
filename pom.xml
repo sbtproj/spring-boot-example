@@ -12,6 +12,7 @@
     <modules>
         <module>documentation</module>
         <module>domain-model</module>
+        <module>frontend-jsf</module>
         <module>repository</module>
         <module>service</module>
         <module>restful-web-service</module>
