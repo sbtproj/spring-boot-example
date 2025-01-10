@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:jsf="jakarta.faces"
+      xmlns:h="jakarta.faces.html">
+<f:view>
+    <h:head>
+        <title>Hello, Faces 4.0!</title>
+    </h:head>
+    <h:body>
+        <h1>Create new customer</h1>
+        <h:form id="form" role="form" class="form">
+            <h:dataTable id="customerTable" value="#{customerListBean.getCustomers()}" var="cs" >
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                    <h:outputText value="#{cs.firstName}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                    <h:outputText value="#{cs.lastName}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
