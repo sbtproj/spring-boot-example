@@ -12,7 +12,7 @@ import java.util.Base64;
 @Configuration
 public class SpringBootRestClientConfiguration {
 
-    @Value("${REMOTE_BASE_URI:http://localhost:8080/restful-web-service/}")
+    @Value("${REMOTE_BASE_URI:http://localhost:8080/restful-ws/}")
     private String apiUrl;
 
     @Value("${restful.service.auth.user}")

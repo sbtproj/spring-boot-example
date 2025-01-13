@@ -15,7 +15,7 @@
         <module>frontend-jsf</module>
         <module>be-repository</module>
         <module>be-service</module>
-        <module>restful-web-service</module>
+        <module>be-restful-ws</module>
     </modules>
 
     <properties>

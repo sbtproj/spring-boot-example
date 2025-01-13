@@ -1,9 +1,9 @@
 
-http://localhost:8080/restful-web-service/customers/
+http://localhost:8080/restful-ws/customers/
 
-http://localhost:8080/restful-web-service/v3/api-docs
+http://localhost:8080/restful-ws/v3/api-docs
 
-http://localhost:8080/restful-web-service/swagger-ui/index.html
+http://localhost:8080/restful-ws/swagger-ui/index.html
 
 https://www.bezkoder.com/spring-boot-swagger-3/
 
