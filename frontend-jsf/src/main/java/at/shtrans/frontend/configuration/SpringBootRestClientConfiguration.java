@@ -26,7 +26,7 @@ public class SpringBootRestClientConfiguration {
         return RestClient
                 .builder()
                 .baseUrl(apiUrl)
-                .defaultHeader(HttpHeaders.AUTHORIZATION, encodeBasic(user, password))
+            //    .defaultHeader(HttpHeaders.AUTHORIZATION, encodeBasic(user, password))
                 .build();
     }
 

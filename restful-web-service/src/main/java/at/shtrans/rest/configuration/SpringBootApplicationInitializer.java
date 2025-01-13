@@ -7,14 +7,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @SpringBootApplication(scanBasePackages = {"at.shtrans.rest.controller"})
 @Import({SpringBootServiceConfiguration.class,
-        SpringBootSwaggerConfiguration.class,
-        SpringBootBasicAuthSecurityConfiguration.class})
+        SpringBootSwaggerConfiguration.class/*,
+        SpringBootBasicAuthSecurityConfiguration.class*/})
 public class SpringBootApplicationInitializer extends SpringBootServletInitializer {
 
     private static final Logger LOG = LoggerFactory.getLogger(SpringBootApplicationInitializer.class);
@@ -33,4 +34,12 @@ public class SpringBootApplicationInitializer extends SpringBootServletInitializ
     protected SpringApplicationBuilder configure(SpringApplicationBuilder springApplicationBuilder) {
         return springApplicationBuilder.sources(applicationClass);
     }
+/*
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
+                .requestMatchers(new AntPathRequestMatcher("/**"));
+    }
+
+ */
 }
