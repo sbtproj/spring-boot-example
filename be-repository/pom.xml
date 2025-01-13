@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>repository</artifactId>
+    <artifactId>be-repository</artifactId>
 
     <dependencies>
         <dependency>

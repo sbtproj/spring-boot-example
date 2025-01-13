@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>at.shtrans</groupId>
-            <artifactId>repository</artifactId>
+            <artifactId>be-repository</artifactId>
         </dependency>
         <!-- springframework boot -->
         <dependency>
