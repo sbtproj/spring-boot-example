@@ -9,10 +9,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>frontend-jsf</artifactId>
+    <artifactId>fe-jsf-application</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>at.shtrans</groupId>
+            <artifactId>fe-rest-client</artifactId>
+        </dependency>
         <!-- jakarta -->
         <dependency>
             <groupId>jakarta.platform</groupId>

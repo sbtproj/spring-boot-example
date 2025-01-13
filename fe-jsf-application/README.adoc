@@ -25,13 +25,6 @@ https://blog.payara.fish/bootiful-enterprise-applications-powered-by-spring-boot
 https://www.vogella.com/tutorials/JavaServerFaces/article.html
 https://github.com/hantsy/jakartaee-faces-sample/blob/master/src/main/webapp/form.xhtml
 
-RestClient:
-https://dev.to/noelopez/new-restclient-in-spring-61-10ac
-https://medium.com/@hariprakaash7/all-about-spring-rest-client-819cdb3c43d4
-https://spring.io/blog/2023/07/13/new-in-spring-6-1-restclient
-https://dev.to/noelopez/new-restclient-in-spring-61-10ac
-https://docs.spring.io/spring-framework/reference/integration/rest-clients.html
-
 Security :
 https://github.com/eugenp/tutorials/blob/master/spring-security-modules/spring-security-authorization/spring-security-secure-domain-object/src/main/java/com/baeldung/config/SecurityConfiguration.java
 https://www.baeldung.com/spring-security-oauth-cognito

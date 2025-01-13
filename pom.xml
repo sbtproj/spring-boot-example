@@ -10,9 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>fe-jsf-application</module>
+        <module>fe-rest-client</module>
         <module>documentation</module>
         <module>be-domain-model</module>
-        <module>frontend-jsf</module>
         <module>be-repository</module>
         <module>be-service</module>
         <module>be-restful-ws</module>
@@ -43,6 +44,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- modules -->
+            <dependency>
+                <groupId>at.shtrans</groupId>
+                <artifactId>fe-rest-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>at.shtrans</groupId>
                 <artifactId>be-domain-model</artifactId>
