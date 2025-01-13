@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>at.shtrans</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>be-service</artifactId>
         </dependency>
         <!-- jakarta -->
         <dependency>
