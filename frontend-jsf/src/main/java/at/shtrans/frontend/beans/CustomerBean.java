@@ -28,12 +28,18 @@ public class CustomerBean implements Serializable {
     }
 
     public void create() {
-        LOGGER.info("BEGIN -> create !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 {}" , customer);
+        LOGGER.info("BEGIN : create -> {}", customer);
+
         customer = customerApiService.create(customer);
-        LOGGER.info("END -> create !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 ");
+
+        LOGGER.info("END : create -> {}", customer);
     }
     public void delete(Customer customer) {
+        LOGGER.info("BEGIN : delete -> {}", customer);
+
         //customerApiService.delete(customer);
+
+        LOGGER.info("END : delete -> {}", customer);
     }
 
     public Customer getCustomer() {
