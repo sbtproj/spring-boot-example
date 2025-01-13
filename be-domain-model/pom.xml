@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>domain-model</artifactId>
+    <artifactId>be-domain-model</artifactId>
 
     <dependencies>
         <!-- jakarta -->

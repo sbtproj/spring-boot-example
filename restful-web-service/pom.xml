@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>at.shtrans</groupId>
-            <artifactId>domain-model</artifactId>
+            <artifactId>be-domain-model</artifactId>
         </dependency>
         <dependency>
             <groupId>at.shtrans</groupId>

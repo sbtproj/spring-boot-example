@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>at.shtrans</groupId>
-            <artifactId>domain-model</artifactId>
+            <artifactId>be-domain-model</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/th.co.geniustree.springdata.jpa/specification-with-projections -->
