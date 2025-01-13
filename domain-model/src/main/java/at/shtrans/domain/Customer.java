@@ -14,7 +14,7 @@ import java.util.StringJoiner;
 
 @Entity
 @Table(name = "customer")
-@SequenceGenerator(name = "SEQ_CUSTOMER", sequenceName = "customer_seq")
+@SequenceGenerator(name = "SEQ_CUSTOMER", sequenceName = "customer_seq",initialValue = 6, allocationSize = 1)
 public class Customer {
 
     @Id
