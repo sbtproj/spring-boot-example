@@ -7,6 +7,7 @@ https://dev.to/noelopez/new-restclient-in-spring-61-10ac
 https://docs.spring.io/spring-framework/reference/integration/rest-clients.html
 
 Security :
+https://dzone.com/articles/secure-spring-rest-with-spring-security-and-oauth2
 https://github.com/eugenp/tutorials/blob/master/spring-security-modules/spring-security-authorization/spring-security-secure-domain-object/src/main/java/com/baeldung/config/SecurityConfiguration.java
 https://www.baeldung.com/spring-security-oauth-cognito
 https://www.propelauth.com/post/spring-boot-auth
