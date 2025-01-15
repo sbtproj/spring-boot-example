@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestClient;
 
 import java.util.Base64;
@@ -29,7 +30,7 @@ public class SpringBootRestClientConfiguration {
         return RestClient
                 .builder()
                 .baseUrl(apiUrl)
-            //    .defaultHeader(HttpHeaders.AUTHORIZATION, encodeBasic(user, password))
+                .defaultHeader(HttpHeaders.AUTHORIZATION, encodeBasic(user, password))
                 .build();
     }
 
