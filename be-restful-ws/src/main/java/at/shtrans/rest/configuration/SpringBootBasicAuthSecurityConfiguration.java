@@ -38,7 +38,6 @@ public class SpringBootBasicAuthSecurityConfiguration {
 
         http.securityMatcher("/customer/**")
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
