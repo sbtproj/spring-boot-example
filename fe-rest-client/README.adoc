@@ -6,6 +6,36 @@ https://spring.io/blog/2023/07/13/new-in-spring-6-1-restclient
 https://dev.to/noelopez/new-restclient-in-spring-61-10ac
 https://docs.spring.io/spring-framework/reference/integration/rest-clients.html
 
+WebClient:
+https://docs.spring.io/spring-framework/reference/web/webflux-webclient/client-filter.html
+
+REquests:
+https://www.warp.dev/terminus/curl-post-request
+https://gist.github.com/jovemfelix/d23f2327aeb7301b1f60274035a57310
+https://stackoverflow.com/questions/14978411/http-post-and-get-using-curl-in-linux
+
+Role:
+https://swagger.io/docs/specification/v3_0/describing-parameters/
+https://github.com/swagger-api/swagger-core/issues/1974
+https://jfrog.com/help/r/jfrog-rest-apis/get-aws-iam-role
+Pass Role to Spring REST
+JWT
+https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html
+.requestMatchers(HttpMethod.GET, "/api/v1/companies/list?sortBy=" + CompanySortBy.ALPHABETICALLY).hasAuthority("ADMIN")
+
+
+RequestMatcher printview = (request) -> request.getParameter("print") != null;
+http
+.authorizeHttpRequests((authorize) -> authorize
+.requestMatchers(printview).hasAuthority("print")
+.anyRequest().authenticated()
+)
+
+https://www.baeldung.com/java-httpservletrequest-get-query-parameters
+
+Query parameters:
+https://dev.to/janux_de/getting-started-with-spring-restclient-5962
+
 Security :
 https://dzone.com/articles/secure-spring-rest-with-spring-security-and-oauth2
 https://github.com/eugenp/tutorials/blob/master/spring-security-modules/spring-security-authorization/spring-security-secure-domain-object/src/main/java/com/baeldung/config/SecurityConfiguration.java

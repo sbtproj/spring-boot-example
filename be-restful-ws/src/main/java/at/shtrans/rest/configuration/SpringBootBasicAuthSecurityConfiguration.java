@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,7 +27,15 @@ public class SpringBootBasicAuthSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securedFilterChain(HttpSecurity http) throws Exception {
-        http.csrf((csrf) -> csrf.disable());
+
+       // Using a Custom AuthorizationManager
+        // https://www.baeldung.com/spring-security-authorizationmanager
+        // https://salahuddin-s.medium.com/custom-header-based-authentication-using-spring-security-17f4163d0986
+
+        http.csrf((csrf) -> csrf.disable()); //No CSRF token
+        http.formLogin((FormLoginConfigurer<HttpSecurity> formLoginCustomizer) -> formLoginCustomizer.disable()); //No Form Login
+        http.logout((LogoutConfigurer<HttpSecurity> logoutCustomizer) -> logoutCustomizer.disable()); //No Logout
+
         http.securityMatcher("/customer/**")
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
