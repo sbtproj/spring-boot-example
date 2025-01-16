@@ -26,7 +26,7 @@ public class CustomerApiService {
         LOGGER.info("BEGIN : create -> {}", customer);
 
         customer = restClient.post() // Angeben, dass dies eine GET-Anfrage ist
-           //     .uri(url + "/create") // URI für die Anfrage festlegen
+                // URI für die Anfrage festlegen
                 .uri(uriBuilder -> uriBuilder.path(url + "/create").queryParam("role", "ADMIN").build())
                 .accept(MediaType.APPLICATION_JSON)
                 .body(customer)
@@ -37,47 +37,44 @@ public class CustomerApiService {
         return customer;
     }
 
-    public Customer findById(Long id) {
-        LOGGER.info("BEGIN : findById -> id={}", id);
-
-        Customer customer = restClient.get() // Angeben, dass dies eine GET-Anfrage ist
-                .uri(url + "/{id}", id) // URI für die Anfrage festlegen
-               // .uri(uriBuilder -> uriBuilder.path(url + "/{id}").queryParam("id", id).queryParam("role", "ADMIN").build())
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve() // Anfrage ausführen und Antwort abrufen
-                .body(Customer.class); // Antworttext als Customer extrahieren
-
-        LOGGER.info("END : findById -> {}", customer);
-        return customer;
-    }
-
     public List<Customer> getAll() {
         LOGGER.info("BEGIN : getAll");
 
-        List<Customer> customerList = restClient.get() // Angeben, dass dies eine GET-Anfrage ist
-                //.uri(url) // URI für die Anfrage
+        List<Customer> customerList = restClient.get()
                 .uri(uriBuilder -> uriBuilder.path(url).queryParam("role", "ADMIN").build())
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve() // Anfrage ausführen und Antwort abrufen
+                .retrieve()
                 .body(new ParameterizedTypeReference<List<Customer>>() {
-                }); // Antworttext als Customer extrahieren
-
+                });
 
         LOGGER.info("END : getAll -> {}", customerList);
         return customerList;
     }
 
+    public Customer findById(Long id) {
+        LOGGER.info("BEGIN : findById -> id={}", id);
+
+        Customer customer = restClient.get()
+                .uri(uriBuilder -> uriBuilder.path(url + "/" + id).queryParam("role", "ADMIN").build())
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(Customer.class);
+
+        LOGGER.info("END : findById -> {}", customer);
+        return customer;
+    }
+
     public void deleteById(Long id) {
         LOGGER.info("BEGIN : deleteById -> id={}", id);
 
-       ResponseEntity responseEntity= restClient.delete()
-                .uri(url + "delete/{id}", id)
-                //.accept(MediaType.APPLICATION_JSON)
+        ResponseEntity responseEntity = restClient.delete()
+                .uri(uriBuilder
+                        -> uriBuilder.path(url + "delete/" + id).queryParam("role", "ADMIN")
+                        .build())
                 .retrieve()
                 .toBodilessEntity();
 
         LOGGER.info("END : deleteById -> responseEntity={}", responseEntity);
-       // return customer;
     }
 
 }
