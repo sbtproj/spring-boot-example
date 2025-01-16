@@ -20,6 +20,18 @@
                     <f:facet name="header">Last Name</f:facet>
                     <h:outputText value="#{cs.lastName}" />
                 </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Details" />
+                    </f:facet>
+                    <h:commandLink process="@this" value="Details" action="#{customerDetailsBean.loadDetails(cs.id)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Delete" />
+                    </f:facet>
+                    <h:commandLink process="@this" value="Delete" action="#{customerBean.deleteById(cs.id)}"/>
+                </h:column>
             </h:dataTable>
         </h:form>
     </h:body>

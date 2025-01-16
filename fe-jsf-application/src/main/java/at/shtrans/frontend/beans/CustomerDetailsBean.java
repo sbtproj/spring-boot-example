@@ -13,35 +13,32 @@ import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class CustomerBean implements Serializable {
+public class CustomerDetailsBean implements Serializable {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerBean.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(CustomerDetailsBean.class);
 
     @Autowired
     private CustomerApiService customerApiService;
 
      Customer customer;
 
+     /*
      @PostConstruct
     private void init() {
          customer = new Customer();
     }
+      */
 
-    public void create() {
-        LOGGER.info("BEGIN : create -> {}", customer);
+    public String loadDetails(Long id) {
+        LOGGER.info("BEGIN : loadDetails -> {}", customer);
 
-        customer = customerApiService.create(customer);
+        customer = customerApiService.findById(id);
 
-        LOGGER.info("END : create -> {}", customer);
+        LOGGER.info("END : loadDetails -> {}", customer);
+
+        return "customer.xhtml";
     }
-    public void deleteById(Long id) {
-        LOGGER.info("BEGIN : delete -> id={}", id);
 
-        customerApiService.deleteById(id);
-
-        LOGGER.info("END : delete -> id={}", id);
-    }
-    
     public Customer getCustomer() {
         return customer;
     }

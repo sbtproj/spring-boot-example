@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -25,7 +26,8 @@ public class CustomerApiService {
         LOGGER.info("BEGIN : create -> {}", customer);
 
         customer = restClient.post() // Angeben, dass dies eine GET-Anfrage ist
-                .uri(url + "/create") // URI für die Anfrage festlegen
+           //     .uri(url + "/create") // URI für die Anfrage festlegen
+                .uri(uriBuilder -> uriBuilder.path(url + "/create").queryParam("role", "ADMIN").build())
                 .accept(MediaType.APPLICATION_JSON)
                 .body(customer)
                 .retrieve() // Anfrage ausführen und Antwort abrufen
@@ -35,16 +37,17 @@ public class CustomerApiService {
         return customer;
     }
 
-    public Customer getById(Long id) {
-        LOGGER.info("BEGIN : getById -> id={}", id);
+    public Customer findById(Long id) {
+        LOGGER.info("BEGIN : findById -> id={}", id);
 
         Customer customer = restClient.get() // Angeben, dass dies eine GET-Anfrage ist
                 .uri(url + "/{id}", id) // URI für die Anfrage festlegen
+               // .uri(uriBuilder -> uriBuilder.path(url + "/{id}").queryParam("id", id).queryParam("role", "ADMIN").build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve() // Anfrage ausführen und Antwort abrufen
                 .body(Customer.class); // Antworttext als Customer extrahieren
 
-        LOGGER.info("END : getById -> {}", customer);
+        LOGGER.info("END : findById -> {}", customer);
         return customer;
     }
 
@@ -52,7 +55,8 @@ public class CustomerApiService {
         LOGGER.info("BEGIN : getAll");
 
         List<Customer> customerList = restClient.get() // Angeben, dass dies eine GET-Anfrage ist
-                .uri(url) // URI für die Anfrage
+                //.uri(url) // URI für die Anfrage
+                .uri(uriBuilder -> uriBuilder.path(url).queryParam("role", "ADMIN").build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve() // Anfrage ausführen und Antwort abrufen
                 .body(new ParameterizedTypeReference<List<Customer>>() {
@@ -61,6 +65,19 @@ public class CustomerApiService {
 
         LOGGER.info("END : getAll -> {}", customerList);
         return customerList;
+    }
+
+    public void deleteById(Long id) {
+        LOGGER.info("BEGIN : deleteById -> id={}", id);
+
+       ResponseEntity responseEntity= restClient.delete()
+                .uri(url + "delete/{id}", id)
+                //.accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .toBodilessEntity();
+
+        LOGGER.info("END : deleteById -> responseEntity={}", responseEntity);
+       // return customer;
     }
 
 }
