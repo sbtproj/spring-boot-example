@@ -44,7 +44,7 @@ public class RoleRequestMatcher implements RequestMatcher {
         LOGGER.info("BEGIN : like -> expectedRequestURI={}, currentRequestURI={}", expectedRequestURI, currentRequestURI);
 
         if(currentRequestURI.contains("/")) {
-            currentRequestURI = currentRequestURI.substring(0, currentRequestURI.lastIndexOf("/") + 1);
+            currentRequestURI = currentRequestURI.substring(0, currentRequestURI.lastIndexOf("/"));
         }
 
         boolean like = expectedRequestURI.equals(currentRequestURI);
