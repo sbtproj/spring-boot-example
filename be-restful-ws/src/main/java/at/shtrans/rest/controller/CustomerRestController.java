@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -146,6 +147,14 @@ public class CustomerRestController {
                     .status(HttpStatus.NOT_FOUND)
                     .build();
         }
+    }
+
+    private boolean checkRole(String expectedRole,  String queryParamRole){
+        Objects.requireNonNull(expectedRole, "Parameter with name [" + expectedRole + "] cannot be NULL!");
+
+       // new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
+
+        return expectedRole.equals(queryParamRole);
     }
 
 }
