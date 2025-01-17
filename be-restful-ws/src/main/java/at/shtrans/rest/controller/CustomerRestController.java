@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.Objects;
 
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping(value = "/customer")
 public class CustomerRestController {
 
     @Autowired
@@ -35,7 +36,7 @@ public class CustomerRestController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<CustomerResource>> allCustomers() {
+    public ResponseEntity<List<CustomerResource>> allCustomers(@RequestParam("role") String role) {
 
         List<CustomerDTO> resultList = customerService.findAll();
 
@@ -44,8 +45,8 @@ public class CustomerRestController {
                 .body(mapper.toResourceList(resultList));
     }
 
-    @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<CustomerResource> findById(@PathVariable(value = "id") Long id) {
+    @GetMapping(value = "/{id}", produces = "application/json", params = {"role"} )
+    public ResponseEntity<CustomerResource> findById(@PathVariable(value = "id") Long id, @RequestParam("role") String role){
 
         try {
             CustomerDTO customer = customerService.findById(id);
@@ -53,7 +54,7 @@ public class CustomerRestController {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(mapper.toResource(customer));
-        } catch (ServiceException e) {
+        } catch (ServiceException e){
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .build();
@@ -61,7 +62,7 @@ public class CustomerRestController {
     }
 
     @GetMapping(value = "/firstName/{firstName}", produces = "application/json")
-    public ResponseEntity<List<CustomerResource>> findByFirstName(@PathVariable(value = "firstName") String firstName) {
+    public ResponseEntity<List<CustomerResource>> findByFirstName(@PathVariable(value = "firstName") String firstName, @RequestParam("role") String role){
 
         List<CustomerDTO> resultList = customerService.findByFirstName(firstName);
 
@@ -71,7 +72,7 @@ public class CustomerRestController {
     }
 
     @GetMapping(value = "/lastName/{lastName}", produces = "application/json")
-    public ResponseEntity<List<CustomerResource>> findByLastName(@PathVariable(value = "lastName") String lastName) {
+    public ResponseEntity<List<CustomerResource>> findByLastName(@PathVariable(value = "lastName") String lastName, @RequestParam("role") String role){
 
         List<CustomerDTO> resultList = customerService.findByLastName(lastName);
 
@@ -80,8 +81,8 @@ public class CustomerRestController {
                 .body(mapper.toResourceList(resultList));
     }
 
-    @GetMapping(value = "/version/{version}", produces = "application/json")
-    public ResponseEntity<List<CustomerResource>> findByVersion(@PathVariable(value = "version") Integer version) {
+    @GetMapping(value = "/version/{version}", produces = "application/json", params = {"role"} )
+    public ResponseEntity<List<CustomerResource>> findByVersion(@PathVariable(value = "version") Integer version, @RequestParam("role") String role){
 
         List<CustomerDTO> resultList = customerService.findByVersion(version);
 
@@ -91,7 +92,7 @@ public class CustomerRestController {
     }
 
     @PostMapping(value = "/create", produces = "application/json")
-    public ResponseEntity<CustomerResource> create(@Valid @RequestBody CustomerResource customerResource) {
+    public ResponseEntity<CustomerResource> create(@Valid @RequestBody CustomerResource customerResource, @RequestParam("role") String role){
 
         CustomerDTO customerDTO = customerService.create(mapper.toDto(customerResource));
         // Return the created resource with a 201 (created) status code
@@ -101,7 +102,7 @@ public class CustomerRestController {
     }
 
     @PutMapping(value = "/update", produces = "application/json")
-    public ResponseEntity<CustomerResource> update(@Valid @RequestBody CustomerResource customerResource) {
+    public ResponseEntity<CustomerResource> update(@Valid @RequestBody CustomerResource customerResource, @RequestParam("role") String role){
 
         try {
             CustomerDTO customerDTO = customerService.update(mapper.toDto(customerResource));
@@ -109,7 +110,7 @@ public class CustomerRestController {
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(mapper.toResource(customerDTO));
-        } catch (ServiceException e) {
+        } catch (ServiceException e){
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .build();
@@ -117,7 +118,7 @@ public class CustomerRestController {
     }
 
     @DeleteMapping(value = "/delete/{id}", produces = "application/json")
-    public ResponseEntity<Long> deleteById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Long> deleteById(@PathVariable(value = "id") Long id, @RequestParam("role") String role){
 
         try {
             Long deletedObjectId = customerService.deleteById(id);
@@ -125,7 +126,7 @@ public class CustomerRestController {
             return ResponseEntity
                     .status(HttpStatus.NO_CONTENT)
                     .body(deletedObjectId);
-        } catch (ServiceException e) {
+        } catch (ServiceException e){
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .build();
@@ -134,7 +135,7 @@ public class CustomerRestController {
     }
 
     @DeleteMapping(value = "/delete/", produces = "application/json")
-    public ResponseEntity<Long> delete(@Valid @RequestBody CustomerResource customerResource) {
+    public ResponseEntity<Long> delete(@Valid @RequestBody CustomerResource customerResource, @RequestParam("role") String role){
 
         try {
             Long deletedObjectId = customerService.delete(mapper.toDto(customerResource));
@@ -142,7 +143,7 @@ public class CustomerRestController {
             return ResponseEntity
                     .status(HttpStatus.NO_CONTENT)
                     .body(deletedObjectId);
-        } catch (ServiceException e) {
+        } catch (ServiceException e){
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .build();
@@ -151,9 +152,7 @@ public class CustomerRestController {
 
     private boolean checkRole(String expectedRole,  String queryParamRole){
         Objects.requireNonNull(expectedRole, "Parameter with name [" + expectedRole + "] cannot be NULL!");
-
        // new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
-
         return expectedRole.equals(queryParamRole);
     }
 
