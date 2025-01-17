@@ -22,13 +22,6 @@ public class CustomerDetailsBean implements Serializable {
 
      Customer customer;
 
-     /*
-     @PostConstruct
-    private void init() {
-         customer = new Customer();
-    }
-      */
-
     public String loadDetails(Long id) {
         LOGGER.info("BEGIN : loadDetails -> {}", customer);
 

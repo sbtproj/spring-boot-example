@@ -41,7 +41,7 @@ public class CustomerApiService {
         LOGGER.info("BEGIN : getAll");
 
         List<Customer> customerList = restClient.get()
-                .uri(uriBuilder -> uriBuilder.path(url).queryParam("role", "ADMIN").build())
+                .uri(uriBuilder -> uriBuilder.path(url).queryParam("role", "ADVISOR").build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<Customer>>() {
@@ -55,7 +55,7 @@ public class CustomerApiService {
         LOGGER.info("BEGIN : findById -> id={}", id);
 
         Customer customer = restClient.get()
-                .uri(uriBuilder -> uriBuilder.path(url + "/" + id).queryParam("role", "ADMIN").build())
+                .uri(uriBuilder -> uriBuilder.path(url + "/" + id).queryParam("role", "ADVISOR").build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .body(Customer.class);

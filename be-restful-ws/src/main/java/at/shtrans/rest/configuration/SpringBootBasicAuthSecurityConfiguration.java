@@ -1,5 +1,6 @@
 package at.shtrans.rest.configuration;
 
+import at.shtrans.rest.configuration.matcher.RoleRequestMatcher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,7 @@ public class SpringBootBasicAuthSecurityConfiguration {
     @Bean
     public SecurityFilterChain securedFilterChain(HttpSecurity http) throws Exception {
 
-       // Using a Custom AuthorizationManager
+        // Using a Custom AuthorizationManager
         // https://www.baeldung.com/spring-security-authorizationmanager
         // https://salahuddin-s.medium.com/custom-header-based-authentication-using-spring-security-17f4163d0986
 
@@ -37,7 +38,11 @@ public class SpringBootBasicAuthSecurityConfiguration {
         http.logout((LogoutConfigurer<HttpSecurity> logoutCustomizer) -> logoutCustomizer.disable()); //No Logout
 
         http.securityMatcher("/customer/**")
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
+                .authorizeHttpRequests(authorize
+                        -> authorize
+                        .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/", "ADMIN", "ADVISOR")).authenticated()
+                        .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/create", "ADMIN")).authenticated()
+                )
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
