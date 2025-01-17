@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="jakarta.faces.core"
-      xmlns:h="jakarta.faces.html">
-<f:view>
-    <h:head>
-        <title>Create New Customer</title>
-    </h:head>
-    <h:body>
-        <h1>Create New Customer</h1>
-        <h:form id="form" role="form" class="form">
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      template="/WEB-INF/layout/template.xhtml">
 
-            <div>
-                <h:outputLabel for="firstName" >First name</h:outputLabel>
-                <h:inputText id="firstName" value="#{customerBean.customer.firstName}" placeholder="First Name"/>
-            </div>
-            <div>
-                <h:outputLabel for="lastName" >First name</h:outputLabel>
-                <h:inputText id="lastName" value="#{customerBean.customer.lastName}" placeholder="LastName Name"/>
-            </div>
+    <f:view>
+        <h:head>
+            <title>Create New Customer</title>
+        </h:head>
+        <h:body>
+            <h1>Create New Customer</h1>
+            <h:form id="form" role="form" class="form">
+                <div>
+                    <h:outputLabel for="firstName">First name</h:outputLabel>
+                    <h:inputText id="firstName" value="#{customerBean.customer.firstName}" placeholder="First Name"/>
+                </div>
+                <div>
+                    <h:outputLabel for="lastName">First name</h:outputLabel>
+                    <h:inputText id="lastName" value="#{customerBean.customer.lastName}" placeholder="LastName Name"/>
+                </div>
+                <div class="form-group">
 
-            <div class="form-group">
-                <h:commandButton id="submitTask" type="submit" action="#{customerBean.create()}" value="Save Customer"/>
-            </div>
-        </h:form>
-    </h:body>
-</f:view>
+                    <c:if test="#{customerBean.customer.id != null}">
+                        <h:commandButton id="updateCustomer" type="submit" action="#{customerBean.update()}"
+                                         value="Update Customer"/>
+                    </c:if>
+                    <c:if test="#{customerBean.customer.id == null}">
+                        <h:commandButton id="saveCustomer" type="submit" action="#{customerBean.create()}"
+                                         value="Save Customer"/>
+                    </c:if>
+                </div>
+            </h:form>
+        </h:body>
+    </f:view>
 </html>

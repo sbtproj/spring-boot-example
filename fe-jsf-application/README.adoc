@@ -19,6 +19,7 @@ https://www.javatpoint.com/restful-web-services-validations
 CustomerResource
 
 JSF:
+https://itnext.io/an-introduction-to-jakarta-faces-4-0-by-examples-d949a7093236
 https://auth0.com/blog/developing-jsf-applications-with-spring-boot/
 https://www.tutorialspoint.com/jsf/jsf_display_datatable.htm
 https://blog.payara.fish/bootiful-enterprise-applications-powered-by-spring-boot-and-hosted-on-payara-micro

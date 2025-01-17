@@ -20,28 +20,52 @@ public class CustomerBean implements Serializable {
     @Autowired
     private CustomerApiService customerApiService;
 
-     Customer customer;
+    Customer customer;
 
-     @PostConstruct
+    @PostConstruct
     private void init() {
-         customer = new Customer();
+        customer = new Customer();
     }
 
-    public void create() {
+    public String create() {
         LOGGER.info("BEGIN : create -> {}", customer);
 
         customer = customerApiService.create(customer);
 
         LOGGER.info("END : create -> {}", customer);
+
+        return "customer_list.xhtml";
     }
-    public void deleteById(Long id) {
+
+    public String update() {
+        LOGGER.info("BEGIN : create -> {}", customer);
+
+        customer = customerApiService.create(customer);
+
+        LOGGER.info("END : create -> {}", customer);
+
+        return "customer_list.xhtml";
+    }
+
+    public String deleteById(Long id) {
         LOGGER.info("BEGIN : delete -> id={}", id);
 
         customerApiService.deleteById(id);
 
         LOGGER.info("END : delete -> id={}", id);
+        return "customer_list.xhtml";
     }
-    
+
+    public String loadDetails(Long id) {
+        LOGGER.info("BEGIN : loadDetails -> {}", customer);
+
+        customer = customerApiService.findById(id);
+
+        LOGGER.info("END : loadDetails -> {}", customer);
+
+        return "customer.xhtml";
+    }
+
     public Customer getCustomer() {
         return customer;
     }

@@ -28,6 +28,12 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
+                        <h:outputText value="Edit" />
+                    </f:facet>
+                    <h:commandLink process="@this" value="Edit" action="#{customerBean.loadDetails(cs.id)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
                         <h:outputText value="Delete" />
                     </f:facet>
                     <h:commandLink process="@this" value="Delete" action="#{customerBean.deleteById(cs.id)}"/>
