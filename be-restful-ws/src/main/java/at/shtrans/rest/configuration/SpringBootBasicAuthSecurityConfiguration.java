@@ -41,7 +41,11 @@ public class SpringBootBasicAuthSecurityConfiguration {
                 .authorizeHttpRequests(authorize
                         -> authorize
                         .requestMatchers(new RoleRequestMatcher("/restful-ws/customer", "ADMIN", "ADVISOR")).authenticated()
+                        .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/firstName", "ADMIN", "ADVISOR")).authenticated()
+                        .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/lastName", "ADMIN", "ADVISOR")).authenticated()
+                        .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/version", "ADMIN", "ADVISOR")).authenticated()
                         .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/create", "ADMIN")).authenticated()
+                        .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/update", "ADMIN")).authenticated()
                         .requestMatchers(new RoleRequestMatcher("/restful-ws/customer/delete", "ADMIN")).authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());

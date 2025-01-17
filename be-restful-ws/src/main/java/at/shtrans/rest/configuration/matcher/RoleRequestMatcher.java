@@ -13,8 +13,8 @@ public class RoleRequestMatcher implements RequestMatcher {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RoleRequestMatcher.class);
 
-    private String expectedRequestURI;
-    private List<String> expectedRoles;
+    private final String expectedRequestURI;
+    private final List<String> expectedRoles;
 
     public RoleRequestMatcher(String expectedRequestURI, String... expectedRoles) {
         this.expectedRequestURI = expectedRequestURI;
@@ -33,17 +33,17 @@ public class RoleRequestMatcher implements RequestMatcher {
         if (StringUtils.isNotBlank(request.getRequestURI())
                 && StringUtils.isNotBlank(request.getParameter("role"))) {
 
-            match = like(expectedRequestURI, request.getRequestURI()) && expectedRoles.contains(request.getParameter("role"));
+            match = like(expectedRequestURI, request.getRequestURI()) && expectedRoles.contains(request.getParameter("role").trim());
         }
 
         LOGGER.info("END : matches -> match={}", match);
         return match;
     }
 
-    private boolean like(String expectedRequestURI, String currentRequestURI){
+    private boolean like(String expectedRequestURI, String currentRequestURI) {
         LOGGER.info("BEGIN : like -> expectedRequestURI={}, currentRequestURI={}", expectedRequestURI, currentRequestURI);
 
-        if(currentRequestURI.contains("/")) {
+        if (currentRequestURI.contains("/")) {
             currentRequestURI = currentRequestURI.substring(0, currentRequestURI.lastIndexOf("/"));
         }
 
