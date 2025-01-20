@@ -1,9 +1,8 @@
 package at.shtrans.frontend.beans;
 
-import at.shtrans.frontend.api.service.CustomerApiService;
+import at.shtrans.frontend.api.service.web.client.CustomerWebClientApiService;
 import at.shtrans.frontend.model.Customer;
 import jakarta.annotation.ManagedBean;
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,14 +17,14 @@ public class CustomerDetailsBean implements Serializable {
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerDetailsBean.class);
 
     @Autowired
-    private CustomerApiService customerApiService;
+    private CustomerWebClientApiService customerWebClientApiService;
 
      Customer customer;
 
     public String loadDetails(Long id) {
         LOGGER.info("BEGIN : loadDetails -> {}", customer);
 
-        customer = customerApiService.findById(id);
+        customer = customerWebClientApiService.findById(id);
 
         LOGGER.info("END : loadDetails -> {}", customer);
 

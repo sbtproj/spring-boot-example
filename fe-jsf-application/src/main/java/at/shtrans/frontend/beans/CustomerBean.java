@@ -1,6 +1,6 @@
 package at.shtrans.frontend.beans;
 
-import at.shtrans.frontend.api.service.CustomerApiService;
+import at.shtrans.frontend.api.service.web.client.CustomerWebClientApiService;
 import at.shtrans.frontend.model.Customer;
 import jakarta.annotation.ManagedBean;
 import jakarta.annotation.PostConstruct;
@@ -18,7 +18,7 @@ public class CustomerBean implements Serializable {
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerBean.class);
 
     @Autowired
-    private CustomerApiService customerApiService;
+    private CustomerWebClientApiService customerWebClientApiService;
 
     Customer customer;
 
@@ -30,7 +30,7 @@ public class CustomerBean implements Serializable {
     public String create() {
         LOGGER.info("BEGIN : create -> {}", customer);
 
-        customer = customerApiService.create(customer);
+        customer = customerWebClientApiService.create(customer);
 
         LOGGER.info("END : create -> {}", customer);
 
@@ -40,7 +40,7 @@ public class CustomerBean implements Serializable {
     public String update() {
         LOGGER.info("BEGIN : create -> {}", customer);
 
-        customer = customerApiService.create(customer);
+        customer = customerWebClientApiService.create(customer);
 
         LOGGER.info("END : create -> {}", customer);
 
@@ -50,7 +50,7 @@ public class CustomerBean implements Serializable {
     public String deleteById(Long id) {
         LOGGER.info("BEGIN : delete -> id={}", id);
 
-        customerApiService.deleteById(id);
+        customerWebClientApiService.deleteById(id);
 
         LOGGER.info("END : delete -> id={}", id);
         return "customer_list.xhtml";
@@ -59,7 +59,7 @@ public class CustomerBean implements Serializable {
     public String loadDetails(Long id) {
         LOGGER.info("BEGIN : loadDetails -> {}", customer);
 
-        customer = customerApiService.findById(id);
+        customer = customerWebClientApiService.findById(id);
 
         LOGGER.info("END : loadDetails -> {}", customer);
 

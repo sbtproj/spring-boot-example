@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"at.shtrans.frontend.beans"})
-@Import({SpringBootRestClientConfiguration.class})
+@Import({SpringBootWebClientConfiguration.class})
 @PropertySources({
         @PropertySource("classpath:application.properties"),
         @PropertySource("classpath:client-application.properties")
